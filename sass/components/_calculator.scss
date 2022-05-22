@@ -1,0 +1,34 @@
+.calculator {
+  max-width: $grid-width;
+  margin: 0 auto;
+  position: relative;
+  top: 3.5rem;
+
+
+  &__display {
+    height: 12rem;
+    padding: 0 1rem;
+  }
+
+  &__buttons {
+    text-align: center;
+  }
+}
+
+.display-history {
+  height: 5rem;
+  font-size: 2rem;
+  text-align: right;
+  color: #919191;
+  &__value {
+    transition: all .3s;
+  }
+}
+.display-output {
+  text-align: right;
+  height: 7rem;
+  font-size: 3.5rem;
+  &__value {
+    transition: all .3s;
+  }
+}

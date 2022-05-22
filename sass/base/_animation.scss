@@ -1,0 +1,16 @@
+.btn {
+
+  &.depressed {
+
+    &--number {
+      background-color: #eee;
+    }
+    &--action {
+      background-color: $color-white;
+      color: $color-secondary-dark;
+    }
+    &--clear {
+      background-color: $color-grey-light2;
+    }
+  }
+}
