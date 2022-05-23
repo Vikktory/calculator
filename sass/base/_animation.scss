@@ -3,14 +3,14 @@
   &.depressed {
 
     &--number {
-      background-color: #eee;
+      transform: scale(0.9);
+
     }
     &--action {
-      background-color: $color-white;
-      color: $color-secondary-dark;
+      transform: scale(0.95);
     }
     &--clear {
-      background-color: $color-grey-light2;
+      transform: scale(0.95);
     }
   }
 }

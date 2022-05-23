@@ -97,24 +97,19 @@ $(".operator").click((e) => {
       sliceHistory += id;
       setHistory(sliceHistory);
     }
-    if (output !== "" && hasNumber(output)) {
-      if (history === "") {
+    if (history === "" && hasNumber(output)) {
+
         output += id
         setHistory(output);
         setOutput("");
-      } else {
-
-        output = history + output + id
-        setHistory(output);
-        setOutput("");
-      }
 
     } else {
       if(history === "") {
         setMinus("-");
       }
     }
-  } else {
+  }
+  else {
     if (id !== "=") {
       animation("depressed--action", e.target);
       if (output === "" && history !== "") {
@@ -122,25 +117,24 @@ $(".operator").click((e) => {
         sliceHistory += id;
         setHistory(sliceHistory);
       }
-
-
-      if (output !== "" && hasNumber(output)) {
-        if (history === "") {
-          output += id
+      if (history === "" && hasNumber(output)) {
+        if (output.includes("e")) {
+           let convertExpo = Number(output).toPrecision();
+           output = convertExpo + id;
+           setHistory(output);
+           setOutput("");
+        } else {
+          output += id;
           setHistory(output);
           setOutput("");
-        } else {
-          if(String(history).length <= 25) {
-            output = history + output + id
-            setHistory(output);
-            setOutput("");
-          }
+
         }
+
       }
     } else {
       animation("depressed--action", e.target);
       history += output;
-      var calculation = eval(history);
+      var calculation = doMath(history);
       if(String(calculation).length > 10) {
         var calculation = calculation.toExponential(5);
         setHistory("");
@@ -174,3 +168,55 @@ $(".decimal").click((e) => {
 function hasNumber(str) {
   return /\d/.test(str);
 }
+
+function doMath(expression) {
+
+  //set up regex and use it to get the mathematical operator.
+
+  //store matched operator for later.
+
+  let regex = /[\÷×+-]/g;
+
+  let operator = expression.match(regex);
+
+
+
+  //split the expression at the operator into two parts.
+
+  expression = expression.split(operator[0]);
+
+
+
+  //return the result.
+
+  switch (operator[0]) {
+
+    case "+":
+
+      return Number(expression[0]) + Number(expression[1]);
+
+      break;
+
+    case "-":
+
+      return Number(expression[0]) - Number(expression[1]);
+
+      break;
+
+    case "÷":
+
+      return Number(expression[0]) / Number(expression[1]);
+
+      break;
+
+    case "×":
+
+      return Number(expression[0]) * Number(expression[1]);
+
+      break;
+
+  }
+
+}
+
+console.log(doMath("6÷2"));

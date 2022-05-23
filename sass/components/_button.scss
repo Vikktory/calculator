@@ -1,24 +1,43 @@
 .btn {
-  width: 6rem;
-  height: 6rem;
+  width: 6.3rem;
+  height: 6.3rem;
   border-radius: 50%;
   border: 0;
   font-size: 2.5rem;
-  background-color: #d0cdcd;
+  background-color: #ebe8e8;
   color: black;
   transition: all .2s;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  @include respond(tab-port) {
+    width: 7rem;
+    height: 7rem;
+    font-size: 3rem;
+  }
+
 
   &--orange {
     background-color: $color-secondary-dark;
     color: white;
+    &:hover {
+      background-color: #f99c6c;
+    }
   }
   &--grey {
-    background-color: #b1aeae;
+    background-color: #d0cdcd;
     color: black;
+    &:hover {
+      background-color: #e3dcdc;
+    }
   }
   &--long {
     width: 100%;
     border-radius: 2.5rem;
   }
+
+
 
 }
