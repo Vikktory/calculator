@@ -218,5 +218,3 @@ function doMath(expression) {
   }
 
 }
-
-console.log(doMath("6÷2"));
